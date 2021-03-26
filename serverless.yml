@@ -1,0 +1,33 @@
+service: point-record-serverless
+
+provider:
+  name: aws
+  stage: api
+  region: sa-east-1
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+
+frameworkVersion: '2'
+
+plugins:
+  - serverless-pseudo-parameters
+  - serverless-offline
+
+custom:
+  bundle:
+    forceInclude:
+      - pg
+    ignorePackages:
+      - pg-native
+
+package:
+  individually: false
+
+functions:
+  point:
+    handler: handlers/point-record/create.handler
+    events:
+    - http:
+        method: POST
+        path: /point-record
+  
