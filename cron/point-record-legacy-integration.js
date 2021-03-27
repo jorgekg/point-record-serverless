@@ -6,6 +6,7 @@ const IntegrationSituation = require('../enums/integration-situation');
 
 const PointRecordService = require("../services/point-record/point-record.service");
 const StatusIntegration = require("../enums/status-integration");
+const HistoryIntegrationService = require("../services/history-integration/history-integration.service");
 
 module.exports.cron = async () => {
   await integrationFunction(StatusIntegration.AWAITING);
@@ -15,17 +16,21 @@ module.exports.cron = async () => {
 const integrationFunction = async (status) => {
   // Valor padrão para conexões com o sistema legado.
   let maxOpenRequests = 5;
-
   // Valor padrão para máximo de requests por minuto.
-  let maxLimitForQuery = 5000;
-
+  let maxLimitForQuery = 300;
   // Contém o valor total de requisições aguardando resposta
   let openRequests = 0;
-
   // Contem o valor de erros nas requests, que será utilizado para reduzir o número de thread em aberto
   let errorRequests = 0;
 
   await new Cron().map(async database => {
+    const historyIntegrationService = new HistoryIntegrationService(database);
+    const histories = await historyIntegrationService.list();
+    if (histories && histories.contents && histories.contents.length) {
+      const [history] = histories.contents;
+      maxOpenRequests = history.maxOpenRequest || 5;
+      maxLimitForQuery = history.maxLimitForQuery || 300;
+    }
     const pointService = new PointRecordService(database);
     const points = await pointService.list({
       filter: `status eq '${status}'`,
@@ -69,6 +74,17 @@ const integrationFunction = async (status) => {
         }));
       }
       console.warn(`Open requests: ${openRequests}`, `Max open requests: ${maxOpenRequests}`, `Errors: ${errorRequests}`);
+    }
+    if (histories && histories.contents && histories.contents.length) {
+      const [history] = histories.contents;
+      history.maxOpenRequest = Math.floor(maxOpenRequests);
+      history.maxLimitForQuery = Math.floor(maxOpenRequests * 60);
+      await historyIntegrationService.update(history.id, history);
+    } else {
+      await historyIntegrationService.create({
+        maxOpenRequest: Math.floor(maxOpenRequests),
+        maxLimitForQuery: Math.floor(maxOpenRequests * 60)
+      });
     }
   });
 }
