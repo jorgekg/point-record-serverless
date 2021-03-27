@@ -4,7 +4,9 @@ provider:
   name: aws
   stage: api
   region: sa-east-1
-  runtime: nodejs12.x
+  runtime: nodejs14.x
+  memorySize: 128
+  timeout: 30
   lambdaHashingVersion: 20201221
 
 frameworkVersion: '2'

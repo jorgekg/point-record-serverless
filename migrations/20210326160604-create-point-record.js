@@ -5,24 +5,24 @@ module.exports = {
       id: {
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true,
+        primaryKey: true
         type: Sequelize.INTEGER
       },
       employeeId: {
         type: Sequelize.BIGINT,
-        allowNull: false,
+        allowNull: false
       },
       employerId: {
         type: Sequelize.BIGINT,
-        allowNull: false,
+        allowNull: false
       },
       includedAt: {
         type: Sequelize.DATE,
-        allowNull: false,
+        allowNull: false
       },
       status: {
         type: Sequelize.STRING(50),
-        allowNull: true,
+        allowNull: true
       },
       createdAt: {
         allowNull: false,
@@ -32,6 +32,8 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
+    }, {
+      engine: 'MYISAM'
     });
   },
   down: async (queryInterface, Sequelize) => {

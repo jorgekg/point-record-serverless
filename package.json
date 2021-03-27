@@ -16,9 +16,10 @@
     "yamljs": "^0.3.0"
   },
   "dependencies": {
-    "sequelize": "^6.6.2",
-    "pg": "^8.5.1",
     "moment": "^2.29.1",
-    "odata-sequelize": "^1.0.21"
+    "mysql2": "^2.2.5",
+    "odata-sequelize": "^1.0.21",
+    "pg": "^8.5.1",
+    "sequelize": "^6.6.2"
   }
 }
