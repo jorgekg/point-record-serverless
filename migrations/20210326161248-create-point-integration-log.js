@@ -9,16 +9,17 @@ module.exports = {
         type: Sequelize.BIGINT
       },
       pointId: {
-        type: Sequelize.BIGINT,
-        allowNull: false
+        type: Sequelize.STRING(250),
+        allowNull: false,
+        references: { model: 'PointRecords', key: 'id' }
       },
       status: {
         type: Sequelize.STRING(50),
-        allowNull: false
+        allowNull: false,
       },
       log: {
         type: Sequelize.TEXT,
-        allowNull: false
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
@@ -28,8 +29,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    }, {
-      engine: 'MYISAM'
     });
   },
   down: async (queryInterface, Sequelize) => {

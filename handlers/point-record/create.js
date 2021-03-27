@@ -5,6 +5,6 @@ const PointRecordService = require('../../services/point-record/point-record.ser
 
 module.exports.handler = async (event) => {
   return await new Handler().map(async (database, body) => {
-    return await new PointRecordService(database).create(body);
-  }, event);
+    return await new PointRecordService(database).createOfDynamoDB(body);
+  }, event, false);
 };

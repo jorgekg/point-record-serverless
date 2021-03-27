@@ -1,14 +1,10 @@
 {
   "development": {
-    "username": "root",
-    "password": "",
+    "username": "postgres",
+    "password": "root",
     "database": "point",
     "host": "localhost",
-    "dialect": "mysql",
-    "logging": false,
-    "pool": {
-      "max": 1
-    }
+    "dialect": "postgres"
   },
   "test": {
     "username": "root",
@@ -18,14 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "admin",
-    "password": "12345678",
+    "username": "jorge",
+    "password": "root",
     "database": "point",
-    "host": "localhost",
-    "dialect": "mysql",
-    "logging": false,
-    "pool": {
-      "max": 1
-    }
+    "host": "15.228.100.156",
+    "dialect": "postgres"
   }
 }

@@ -16,10 +16,16 @@
     "yamljs": "^0.3.0"
   },
   "dependencies": {
+    "aws-sdk": "^2.874.0",
+    "dynamoose": "^2.7.3",
+    "express": "^4.17.1",
     "moment": "^2.29.1",
+    "morgan": "^1.10.0",
     "mysql2": "^2.2.5",
     "odata-sequelize": "^1.0.21",
     "pg": "^8.5.1",
-    "sequelize": "^6.6.2"
+    "sequelize": "^6.6.2",
+    "uuid": "^8.3.2",
+    "xhr-request": "^1.1.0"
   }
 }

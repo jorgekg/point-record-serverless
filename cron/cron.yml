@@ -1,0 +1,15 @@
+point_postgres_integration:
+  handler: cron/point-record-postgres-integration.cron
+  memorySize: 512
+  timeout: 900
+  events:
+    - schedule:
+        rate: rate(1 minutes)
+
+point_legacy_integration:
+  handler: cron/point-record-legacy-integration.cron
+  memorySize: 512
+  timeout: 900
+  events:
+    - schedule:
+        rate: rate(1 minutes)

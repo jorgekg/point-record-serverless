@@ -5,14 +5,16 @@ const NotFoundException = require('../exceptions/not-found.exception');
 module.exports = class Service {
 
   constructor(database, Model) {
-    this.sequelize = database.sequelize;
-    this.database = database;
-    this.model = Model(this.sequelize, database.schema);
+    if (database) {
+      this.sequelize = database.sequelize;
+      this.database = database;
+      this.model = Model(this.sequelize, database.schema);
+    }
   }
 
-  async get(id) {
+  async get(id, catchable = true) {
     let entity = await this.model.findByPk(id);
-    if (!entity) {
+    if (!entity && catchable) {
       throw new NotFoundException(`Id ${id} not found!`);
     }
     return entity;
@@ -54,5 +56,13 @@ module.exports = class Service {
       await this.afterCreate(entitySaved);
     }
     return entitySaved;
+  }
+
+  async update(id, entity) {
+    await this.model.update(entity, {
+      where: {
+        id: id
+      }
+    });
   }
 }

@@ -4,9 +4,9 @@ module.exports = {
     await queryInterface.createTable('PointRecords', {
       id: {
         allowNull: false,
-        autoIncrement: true,
+        autoIncrement: false,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING(250)
       },
       employeeId: {
         type: Sequelize.BIGINT,
@@ -32,8 +32,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    }, {
-      engine: 'MYISAM'
     });
   },
   down: async (queryInterface, Sequelize) => {

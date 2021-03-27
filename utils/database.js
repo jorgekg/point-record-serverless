@@ -10,8 +10,12 @@ module.exports = class Database {
     this.sequelize = new Sequelize(config.database, config.username, config.password, {
       host: config.host,
       dialect: config.dialect,
-      // dialectModule: pg,
-      database: config.database
+      dialectModule: pg,
+      database: config.database,
+      logging: false,
+      pool: {
+        max: 1
+      }
     });
   }
 

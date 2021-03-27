@@ -2,17 +2,24 @@ const Database = require('../utils/database');
 
 module.exports = class Handler {
 
-  async map(callback, event) {
-    const database = new Database();
+  async map(callback, event, instanceDB = true) {
+    let database = null;
+    if (instanceDB) {
+      database = new Database();
+    }
     try {
       const response = {
         statusCode: 200,
         body: JSON.stringify(await callback(database, event.body ? JSON.parse(event.body) : null)),
       };
-      database.close();
+      if (instanceDB) {
+        database.close();
+      }
       return response;
     } catch (err) {
-      database.close();
+      if (instanceDB) {
+        database.close();
+      }
       if (err.name === 'SequelizeValidationError' && err.errors) {
         return {
           statusCode: 400,
