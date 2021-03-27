@@ -1,29 +1,28 @@
 const Database = require('../utils/database');
-const BadRequestException = require('../exceptions/bad-request.exception');
 
 module.exports = class Handler {
 
   async map(callback, event) {
+    const database = new Database();
     try {
-      const database = new Database();
-      if (!event.body) {
-        throw new BadRequestException('Body is required');
-      }
-      return {
+      const response = {
         statusCode: 200,
-        body: JSON.stringify(await callback(database, JSON.parse(event.body))),
+        body: JSON.stringify(await callback(database, event.body ? JSON.parse(event.body) : null)),
       };
+      database.close();
+      return response;
     } catch (err) {
-      console.log(err);
-      if (err.error && err.error.errors) {
+      database.close();
+      if (err.name === 'SequelizeValidationError' && err.errors) {
         return {
           statusCode: 400,
           body: JSON.stringify({
             code: 400,
-            message: err.error.errors.map(errMap => errMap.message).join(', ')
+            message: err.errors.map(errMap => errMap.message).join(', ')
           }),
         };
       }
+      console.log(err);
       return {
         statusCode: err.code || 500,
         body: JSON.stringify({

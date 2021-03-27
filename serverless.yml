@@ -24,10 +24,6 @@ package:
   individually: false
 
 functions:
-  point:
-    handler: handlers/point-record/create.handler
-    events:
-    - http:
-        method: POST
-        path: /point-record
+  - ${file(handlers/point-record/point-record.yml)}
+  - ${file(handlers/point-integration-log/point-integration-log.yml)}
   

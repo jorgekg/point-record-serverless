@@ -1,0 +1,6 @@
+retrieve_point_integration:
+  handler: handlers/point-integration-log/list.handler
+  events:
+    - http:
+        method: GET
+        path: /point-record/logs

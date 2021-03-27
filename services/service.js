@@ -19,6 +19,9 @@ module.exports = class Service {
   }
 
   async list(filter) {
+    if (!filter) {
+      filter = {};
+    }
     if (!filter.size) {
       filter.top = 10;
     } else {
@@ -43,25 +46,13 @@ module.exports = class Service {
 
   async create(entity) {
     let entitySaved = null;
+    if (this.beforeCreate) {
+      await this.beforeCreate(entity);
+    }
     entitySaved = await this.model.create(entity);
+    if (this.afterCreate) {
+      await this.afterCreate(entitySaved);
+    }
     return entitySaved;
   }
-
-  async update(id, entity) {
-    const oldEntity = await this.get(id);
-    let entityUpdated = entity;
-    await this.model.update(entity, { where: { id: id } });
-    Object.keys(oldEntity).forEach(key => {
-      if (entityUpdated[key]) {
-        oldEntity[key] = entityUpdated[key];
-      }
-    });
-    return oldEntity;
-  }
-
-  async delete(id) {
-    await this.get(id);
-    await this.model.destroy({ where: { id: id } });
-  }
-
 }
