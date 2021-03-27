@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "postgres",
-    "password": "root",
+    "password": "postgres",
     "database": "point",
-    "host": "localhost",
+    "host": "point.cftqnv1aqksp.sa-east-1.rds.amazonaws.com",
     "dialect": "postgres"
   },
   "test": {
@@ -14,10 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "jorge",
-    "password": "root",
+    "username": "postgres",
+    "password": "postgres",
     "database": "point",
-    "host": "15.228.100.156",
+    "host": "point.cftqnv1aqksp.sa-east-1.rds.amazonaws.com",
     "dialect": "postgres"
   }
 }

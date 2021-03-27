@@ -1,10 +1,10 @@
 const aws = require('aws-sdk');
 
 aws.config.update({
-  region: process.env.DYNAMO_DB.region,
-  endpoint: process.env.DYNAMO_DB.endpoint,
-  accessKeyId: process.env.DYNAMO_DB.accessKeyId,
-  secretAccessKey: process.env.DYNAMO_DB.secretAccessKey
+  region: process.env.region,
+  endpoint: process.env.endpoint,
+  accessKeyId: process.env.accessKeyId,
+  secretAccessKey: process.env.secretAccessKey
 });
 
 module.exports = class DynamoDB {

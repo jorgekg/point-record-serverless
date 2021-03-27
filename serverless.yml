@@ -9,11 +9,10 @@ provider:
   timeout: 30
   lambdaHashingVersion: 20201221
   environment:
-    DYNAMO_DB:
-      region: 'sa-east-1'
-      endpoint: 'https://dynamodb.sa-east-1.amazonaws.com'
-      accessKeyId: 'AKIAQG64LVSUNLIWEQEJ'
-      secretAccessKey: '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'
+    region: 'sa-east-1'
+    endpoint: 'https://dynamodb.sa-east-1.amazonaws.com'
+    accessKeyId: 'AKIAQG64LVSUNLIWEQEJ'
+    secretAccessKey: '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'
     LEGACY_ENDPOINT: 'https://api.mockytonk.com/proxy/ab2198a3-cafd-49d5-8ace-baac64e72222'
 
 frameworkVersion: '2'
@@ -21,6 +20,7 @@ frameworkVersion: '2'
 plugins:
   - serverless-pseudo-parameters
   - serverless-offline
+  - serverless-local-schedule
 
 custom:
   bundle:
