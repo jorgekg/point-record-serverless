@@ -27,7 +27,9 @@
 - No arquivo `serverless.yml` em `provider > environment` aponte sua accesKey, secretAccessKey da AWS endpoint e região do DynamoDB e o endpoint (os endpoints podem ser acessados aqui https://docs.aws.amazon.com/general/latest/gr/ddb.html) do sistema legado.
 
 `Para executar localmente é necessário criar uma tabela no DynamoDB chamanda point e chave primária id: string.`
+![alt text](https://github.com/jorgekg/point-record-serverless/blob/master/images/DynamoDB-create.PNG?raw=true)
 `Para teste de performance não esqueça de marcar as opção de auto escalamento do banco.`
+![alt text](https://github.com/jorgekg/point-record-serverless/blob/master/images/auto-scaling.PNG?raw=true)
 `Por fim rode o comando npm start`
 
 Vale lembrar que a API OData pode levar até 1 minuto para estar disponível, após a inserção dos dados!
