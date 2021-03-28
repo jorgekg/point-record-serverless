@@ -11,8 +11,8 @@ provider:
   environment:
     region: 'sa-east-1'
     endpoint: 'https://dynamodb.sa-east-1.amazonaws.com'
-    accessKeyId: 'AKIAQG64LVSUNLIWEQEJ'
-    secretAccessKey: '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'
+    accessKeyId: 'AKIAUVZN2UWA7HPJ54GS'
+    secretAccessKey: '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'
     LEGACY_ENDPOINT: 'https://api.mockytonk.com/proxy/ab2198a3-cafd-49d5-8ace-baac64e72222'
 
 frameworkVersion: '2'

@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "62cea677-3e8f-4127-8ae1-f5f42ef2d94d",
+		"name": "point-record",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create point record",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"employeeId\": 1321,\r\n    \"employerId\": 121,\r\n    \"includedAt\": \"2021-03-26T22:40:00Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/point-record",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"point-record"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve point record",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/point-record/6c398f16-6595-47a5-a9c4-d3cf803ed2f2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"point-record",
+						"6c398f16-6595-47a5-a9c4-d3cf803ed2f2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list point record",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/point-record/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"point-record",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list point integration log",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://3xm74120ti.execute-api.sa-east-1.amazonaws.com/api/point-record/logs?filter=pointId eq 9",
+					"protocol": "https",
+					"host": [
+						"3xm74120ti",
+						"execute-api",
+						"sa-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"api",
+						"point-record",
+						"logs"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "pointId eq 9"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

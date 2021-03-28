@@ -24,6 +24,7 @@ const integrationFunction = async (status) => {
   let errorRequests = 0;
 
   await new Cron().map(async database => {
+    console.log('Integrando itens com o sistema legado');
     const historyIntegrationService = new HistoryIntegrationService(database);
     const histories = await historyIntegrationService.list();
     if (histories && histories.contents && histories.contents.length) {

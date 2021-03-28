@@ -4,7 +4,7 @@ point_postgres_integration:
   timeout: 900
   events:
     - schedule:
-        rate: cron(*/1 * * * ? *)
+        rate: rate(1 minute)
         timezone: America/New_York
 
 point_legacy_integration:
@@ -13,5 +13,5 @@ point_legacy_integration:
   timeout: 900
   events:
     - schedule:
-        rate: cron(*/1 * * * ? *)
+        rate: rate(1 minute)
         timezone: America/New_York
