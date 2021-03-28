@@ -39,6 +39,8 @@ Por fim rode o comando `npm start`
 Vale lembrar que a API OData pode levar até 1 minuto para estar disponível, após a inserção dos dados!
 `Para facilitar uma coleção do postman esta disponível aqui https://github.com/jorgekg/point-record-serverless/blob/master/point-record.postman_collection.json`
 
+O ambiente local é apenas para teste da arquitetura, portanto para teste de performance é recomendado utilizar o ambiente cloud.
+
 # Rodando a arquitetura na AWS
 ### Pré requisitos
 - Nodejs
