@@ -11,7 +11,6 @@ module.exports.cron = async () => {
   // Multiplicando por 1000 para ter o número em MB, acarreta no 4096.
   const maxLimitForQuery = 4096;
   await new Cron().map(async database => {
-    console.log('Integrando itens do DynamoDB');
     const pointService = new PointRecordService(database);
     let pointDynamoDB = await pointService.getOfDynamoDB(maxLimitForQuery);
     for (let i = 0; i < pointDynamoDB.Items.length; i++) {

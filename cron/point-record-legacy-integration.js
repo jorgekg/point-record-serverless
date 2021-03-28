@@ -24,9 +24,9 @@ const integrationFunction = async (status) => {
   let errorRequests = 0;
 
   await new Cron().map(async database => {
-    console.log('Integrando itens com o sistema legado');
     const historyIntegrationService = new HistoryIntegrationService(database);
     const histories = await historyIntegrationService.list();
+    console.log('Integrando: ' + histories.contents.length);
     if (histories && histories.contents && histories.contents.length) {
       const [history] = histories.contents;
       maxOpenRequests = history.maxOpenRequest || 5;
