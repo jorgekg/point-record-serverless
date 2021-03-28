@@ -13,7 +13,7 @@
 # Rodando a arquitetura localmente
 ### Pré requisitos
 - Nodejs
-- Serveless Framwork (`npm install -g serverless`)
+- Serverless Framwork (`npm install -g serverless`)
 - Postgres
 - Sequelize CLI (`npm install -g sequelize-cli`)
 - Conta na AWS
@@ -21,18 +21,14 @@
 ### Instalação
 - Clonar o repositório.
 - Acessar a pasta clonada e rodar um `npm i`.
-- Adicionar uma base de dados no postgres com nome de `point`.
+- Adicionar uma base de dados no postgres 11 com nome de `point`.
 - Acessar o diretório clonado `\config\config.json` e apontar o ambiente development ao seu postgres 11.
 - No root do projeto clonado executar o comando `npx sequelize-cli db:migrate`, para migrar a base.
-- No arquivo `serverless.yml` em `provider > environment` aponte sua accesKey, secretAccessKey da AWS endpoint e região do DynamoDB e o endpoint (os endpoints podem ser acessados aqui https://docs.aws.amazon.com/general/latest/gr/ddb.html) do sistema legado.
+- No arquivo `serverless.yml` em `provider > environment` aponte sua accesKey, secretAccessKey da AWS endpoint e região do DynamoDB (os endpoints podem ser acessados aqui https://docs.aws.amazon.com/general/latest/gr/ddb.html) e o endpoint do sistema legado.
 
 Para executar localmente é necessário criar uma tabela no DynamoDB chamanda `point` e chave `primária id: string.`
 
 ![alt text](https://github.com/jorgekg/point-record-serverless/blob/master/images/DynamoDB-create.PNG?raw=true)
-
-Para teste de performance não esqueça de marcar as opção de auto escalamento do banco.
-
-![alt text](https://github.com/jorgekg/point-record-serverless/blob/master/images/auto-scaling.PNG?raw=true)
 
 Por fim rode o comando `npm start`
 
@@ -44,7 +40,7 @@ O ambiente local é apenas para teste da arquitetura, portanto para teste de per
 # Rodando a arquitetura na AWS
 ### Pré requisitos
 - Nodejs
-- Serveless Framwork (`npm install -g serverless`)
+- Serverless Framwork (`npm install -g serverless`)
 - Postgres
 - Sequelize CLI (`npm install -g sequelize-cli`)
 - Conta na AWS
@@ -52,10 +48,10 @@ O ambiente local é apenas para teste da arquitetura, portanto para teste de per
 ### Instalação
 - Clonar o repositório.
 - Acessar a pasta clonada e rodar um `npm i`.
-- Adicionar uma base de dados no postgres com nome de `point`.
+- Adicionar uma base de dados no postgres 11 com nome de `point`.
 - Acessar o diretório clonado `\config\config.json` e apontar o ambiente development ao seu postgres 11.
 - No root do projeto clonado executar o comando `npx sequelize-cli db:migrate`, para migrar a base.
-- No arquivo `serverless.yml` em `provider > environment` aponte sua accesKey, secretAccessKey da AWS endpoint e região do DynamoDB e o endpoint (os endpoints podem ser acessados aqui https://docs.aws.amazon.com/general/latest/gr/ddb.html) do sistema legado.
+- No arquivo `serverless.yml` em `provider > environment` aponte sua accesKey, secretAccessKey da AWS endpoint e região do DynamoDB (os endpoints podem ser acessados aqui https://docs.aws.amazon.com/general/latest/gr/ddb.html) e o endpoint do sistema legado.
 - No arquivo `\cron\cron.yml` altere o `rate: rate(1 minute)` para `rate: cron(*/1 * * * ? *)` nas duas referências.
 
 Para executar na AWS  é necessário criar uma tabela no DynamoDB chamanda `point` e chave `primária id: string.`
