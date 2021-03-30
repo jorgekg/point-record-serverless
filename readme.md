@@ -63,6 +63,7 @@ Para teste de performance não esqueça de marcar as opção de auto escalamento
 ![alt text](https://github.com/jorgekg/point-record-serverless/blob/master/images/auto-scaling.PNG?raw=true)
 
 Configure as chaves para deploy `serverless config credentials --provider aws --key AKIAIOSFODNN7EXAMPLE --secret wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY -o`.
+`As chaves aqui são meramente ilustrativas`
 
 Por fim rode o comando `sls deploy`.
 
